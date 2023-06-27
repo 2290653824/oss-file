@@ -1,0 +1,7 @@
+oss:
+  endpoint: https://oss-cn-hangzhou.aliyuncs.com
+  bucketName: other-file-manager
+  rootPath: resume/
+  accessKey: 111
+  accessValue: 222
+  returnBaseUrl: http://other-file-manager.oss-cn-hangzhou.aliyuncs.com/
