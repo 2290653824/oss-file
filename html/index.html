@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>文件上传</title>
+  <style>
+    .file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<h1>文件上传</h1>
+
+<input type="file" id="file-input" class="file-input">
+<button onclick="chooseFile()">选择文件</button>
+
+<p id="selected-file-name"></p>
+<button onclick="uploadFile()">上传</button>
+
+<div id="upload-status"></div>
+
+<script>
+  function chooseFile() {
+    const fileInput = document.getElementById('file-input');
+    fileInput.click();
+    fileInput.addEventListener('change', function() {
+      const selectedFile = fileInput.files[0];
+      const selectedFileName = selectedFile.name;
+      document.getElementById('selected-file-name').textContent = '已选择文件: ' + selectedFileName;
+    });
+  }
+
+  function uploadFile() {
+    const fileInput = document.getElementById('file-input');
+    const selectedFile = fileInput.files[0];
+
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      const request = new XMLHttpRequest();
+      request.open('POST', 'http://localhost:8080/file/uploadFile'); // 替换成实际的上传接口地址
+      request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            const response = JSON.parse(request.responseText);
+            console.log(response);
+            const fileUrl = response.data;
+            document.getElementById('upload-status').innerHTML = '上传成功！文件链接：<a href="' + fileUrl + '">' + fileUrl + '</a>';
+          } else {
+            document.getElementById('upload-status').textContent = '上传失败，请重试。';
+          }
+        }
+      };
+
+      request.send(formData);
+      document.getElementById('upload-status').textContent = '正在上传...';
+    } else {
+      document.getElementById('upload-status').textContent = '请选择一个文件。';
+    }
+  }
+</script>
+</body>
+</html>
