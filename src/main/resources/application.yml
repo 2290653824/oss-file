@@ -1,7 +1,13 @@
 oss:
   endpoint: https://oss-cn-hangzhou.aliyuncs.com
   bucketName: other-file-manager
-  rootPath: resume/
-  accessKey: 111
-  accessValue: 222
+  rootPath: xiaohongshu/
+  accessKey: LTAI5tG5sCHP22H7MLFLJwwy
+  accessValue: SdbDmtmw55JuJb0mZaAuHNGkHkP9A0
   returnBaseUrl: http://other-file-manager.oss-cn-hangzhou.aliyuncs.com/
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB   # 默认最大1M
+      max-request-size: 20MB
