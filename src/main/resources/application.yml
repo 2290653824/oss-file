@@ -2,8 +2,8 @@ oss:
   endpoint: https://oss-cn-hangzhou.aliyuncs.com
   bucketName: other-file-manager
   rootPath: xiaohongshu/
-  accessKey: LTAI5tG5sCHP22H7MLFLJwwy
-  accessValue: SdbDmtmw55JuJb0mZaAuHNGkHkP9A0
+  accessKey: ***
+  accessValue: ***
   returnBaseUrl: http://other-file-manager.oss-cn-hangzhou.aliyuncs.com/
 
 spring:
